@@ -78,6 +78,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Platform.wsgi.application'
 
 
+# Celery + Redis
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/1'
+CELERY_TIMEZONE = 'UTC'
+CELERY_TASK_TIME_LIMIT = 60 * 30
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 

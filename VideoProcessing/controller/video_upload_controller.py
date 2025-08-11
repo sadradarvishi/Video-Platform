@@ -4,6 +4,7 @@ from rest_framework.status import HTTP_201_CREATED, HTTP_400_BAD_REQUEST
 from rest_framework.permissions import IsAuthenticated
 
 from VideoProcessing.logic.video_upload_logic import VideoUploadLogic
+from VideoProcessing.tasks import process_video
 
 class VideoUploadController(APIView):
     permission_classes = [IsAuthenticated]
@@ -16,7 +17,9 @@ class VideoUploadController(APIView):
         try:
             data = request.data
             creator = request.user
-            self.video_upload_logic.upload_video(data, creator)
+            video = self.video_upload_logic.upload_video(data, creator)
+
+            process_video.delay(video.id)
 
             return Response(None, HTTP_201_CREATED)
 

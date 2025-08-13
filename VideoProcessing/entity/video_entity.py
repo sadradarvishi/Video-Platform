@@ -17,7 +17,7 @@ class VideoEntity(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
     processed_file = models.FileField(upload_to='processed/', null=True, blank=True)
-    thumbnail = models.ImageField(upload_to='thumbnail/', null=True, blank=True)
+    thumbnail = models.ImageField(upload_to='thumbnail/', null=False, blank=False)
 
     def __str__(self):
         return self.title

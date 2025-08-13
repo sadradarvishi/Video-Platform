@@ -1,3 +1,5 @@
+from rest_framework.exceptions import ValidationError
+
 from VideoProcessing.dao.video_upload_dao import VideoUploadDao
 
 
@@ -11,6 +13,9 @@ class VideoUploadLogic:
         title = data.get('title')
         file = data.get('file')
         thumbnail = data.get('thumbnail')
+
+        if not thumbnail.lower().endswith(('.jpg', 'jpeg')):
+            raise ValidationError("please upload files in jpeg or jpg")
 
         return self.video_upload_dao.upload_video(
             title=title,

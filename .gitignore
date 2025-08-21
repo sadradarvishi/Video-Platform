@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+.venv/
+env/
+venv/
+ENV/
+*.env
+
+# Django
+*.log
+*.pot
+*.pyc
+media/
+staticfiles/
+local_settings.py
+.env
+
+
+# VS Code / PyCharm / IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Swagger/OpenAPI
+*.yaml~    # backup files
+
+
+# Migrations (optional, if you don’t want auto-generated files)
+# **/migrations/*.py
+# **/migrations/__pycache__/

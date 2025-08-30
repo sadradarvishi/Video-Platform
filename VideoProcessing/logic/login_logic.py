@@ -11,7 +11,7 @@ class LoginLogic:
 
     def password_checker(self, username, password):
         user = self.login_dao.get_user_by_username(username=username)
-        return check_password(password, user.password)
+        return user.check_password(password)
 
     def generate_token(self, username):
         user = self.login_dao.get_user_by_username(username=username)
